@@ -7,46 +7,34 @@ class UserSignupPage extends React.Component {
     password: null,
     passwordRepeat: null
   };
-  onChangeUsername = (event) => {
-   this.setState({
-    username: event.target.value
-   })
-  };
-
-  onChangeDisplayName = event => {
+  // Generic
+  onChange = event => {
+    const value = event.target.value;
+    const field = event.target.name;
     this.setState({
-        displayName: event.target.value
+        [field]: value
     })
   }
-  onChangePassword = event => {
-    this.setState({
-        password: event.target.value
-    })
-  }
-  onChangePasswordRepeat = event => {
-    this.setState({
-        passwordRepeat: event.target.value
-    })
-  }
+  
   render() {
     return (
       <form>
         <h1>Sign Up</h1>
         <div>
           <label>Username</label>
-          <input onChange={this.onChangeUsername} />
+          <input name="username" onChange={this.onChange} />
         </div>
         <div>
           <label>Display Name</label>
-          <input onChange={this.onChangeDisplayName} />
+          <input name="displayName" onChange={this.onChange} />
         </div>
         <div>
           <label>Password</label>
-          <input type="password" onChange={this.onChangePassword}/>
+          <input name="password" type="password" onChange={this.onChange}/>
         </div>
         <div>
           <label>Password Repeat</label>
-          <input type="password" onChange={this.onChangePasswordRepeat}/>
+          <input name="passwordRepeat" type="password" onChange={this.onChange}/>
         </div>
         
         <button>Sign Up</button>

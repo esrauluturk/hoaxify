@@ -1,6 +1,9 @@
 import React from "react";
 
 class UserSignupPage extends React.Component {
+    onChangeUsername = event => {
+        console.log(event.target.value);
+    }
   render() {
     return (
       <form>
@@ -8,9 +11,7 @@ class UserSignupPage extends React.Component {
         <div>
           <label>Username</label>
           <input
-            onChange={(event) => {
-              console.log(event.target.value);
-            }}
+            onChange={this.onChangeUsername}
           />
         </div>
         <div>

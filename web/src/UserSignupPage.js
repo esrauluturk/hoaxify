@@ -3,7 +3,9 @@ import React from "react";
 class UserSignupPage extends React.Component {
   state = {
     username: null,
-    agreedClicked: false
+    displayName: null,
+    password: null,
+    passwordRepeat: null
   };
   onChangeUsername = (event) => {
    this.setState({
@@ -11,9 +13,19 @@ class UserSignupPage extends React.Component {
    })
   };
 
-  onChangeAgree = event => {
+  onChangeDisplayName = event => {
     this.setState({
-        agreedClicked: event.target.checked
+        displayName: event.target.value
+    })
+  }
+  onChangePassword = event => {
+    this.setState({
+        password: event.target.value
+    })
+  }
+  onChangePasswordRepeat = event => {
+    this.setState({
+        passwordRepeat: event.target.value
     })
   }
   render() {
@@ -26,18 +38,18 @@ class UserSignupPage extends React.Component {
         </div>
         <div>
           <label>Display Name</label>
-          <input />
+          <input onChange={this.onChangeDisplayName} />
         </div>
         <div>
           <label>Password</label>
-          <input type="password" />
+          <input type="password" onChange={this.onChangePassword}/>
         </div>
         <div>
           <label>Password Repeat</label>
-          <input type="password" />
+          <input type="password" onChange={this.onChangePasswordRepeat}/>
         </div>
-        <input type="checkbox" onChange={this.onChangeAgree}/> Agreed
-        <button disabled={!this.state.agreedClicked}>Sign Up</button>
+        
+        <button>Sign Up</button>
       </form>
     );
   }

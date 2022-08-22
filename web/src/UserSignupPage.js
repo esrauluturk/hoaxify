@@ -5,17 +5,16 @@ class UserSignupPage extends React.Component {
     username: null,
     displayName: null,
     password: null,
-    passwordRepeat: null
+    passwordRepeat: null,
   };
   // Generic
-  onChange = event => {
-    const value = event.target.value;
-    const field = event.target.name;
+  onChange = (event) => {
+    const { name, value } = event.target; // field -> name
     this.setState({
-        [field]: value
-    })
-  }
-  
+      [name]: value,
+    });
+  };
+
   render() {
     return (
       <form>
@@ -30,13 +29,17 @@ class UserSignupPage extends React.Component {
         </div>
         <div>
           <label>Password</label>
-          <input name="password" type="password" onChange={this.onChange}/>
+          <input name="password" type="password" onChange={this.onChange} />
         </div>
         <div>
           <label>Password Repeat</label>
-          <input name="passwordRepeat" type="password" onChange={this.onChange}/>
+          <input
+            name="passwordRepeat"
+            type="password"
+            onChange={this.onChange}
+          />
         </div>
-        
+
         <button>Sign Up</button>
       </form>
     );

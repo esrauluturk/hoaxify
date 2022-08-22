@@ -1,18 +1,28 @@
 import React from "react";
 
 class UserSignupPage extends React.Component {
-    onChangeUsername = event => {
-        console.log(event.target.value);
-    }
+  state = {
+    username: null,
+    agreedClicked: false
+  };
+  onChangeUsername = (event) => {
+   this.setState({
+    username: event.target.value
+   })
+  };
+
+  onChangeAgree = event => {
+    this.setState({
+        agreedClicked: event.target.checked
+    })
+  }
   render() {
     return (
       <form>
         <h1>Sign Up</h1>
         <div>
           <label>Username</label>
-          <input
-            onChange={this.onChangeUsername}
-          />
+          <input onChange={this.onChangeUsername} />
         </div>
         <div>
           <label>Display Name</label>
@@ -26,7 +36,8 @@ class UserSignupPage extends React.Component {
           <label>Password Repeat</label>
           <input type="password" />
         </div>
-        <button>Sign Up</button>
+        <input type="checkbox" onChange={this.onChangeAgree}/> Agreed
+        <button disabled={!this.state.agreedClicked}>Sign Up</button>
       </form>
     );
   }

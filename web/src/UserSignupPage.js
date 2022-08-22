@@ -9,7 +9,7 @@ class UserSignupPage extends React.Component {
           <label>Username</label>
           <input
             onChange={function (event) {
-              console.log(event.target);
+              console.log(event.target.value);
             }}
           />
         </div>
